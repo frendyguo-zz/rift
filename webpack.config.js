@@ -4,7 +4,6 @@ const AssetsPlugin = require('assets-webpack-plugin');
 const ExtractChunksPlugin = require('extract-css-chunks-webpack-plugin');
 const nodeExternals = require('webpack-node-externals');
 const WebpackStartServerPlugin = require('start-server-webpack-plugin');
-// const { ReactLoadablePlugin } = require('react-loadable/webpack');
 const paths = require('./scripts/configs/path');
 const logger = require('./scripts/utils/logger');
 
@@ -60,7 +59,9 @@ module.exports = (
     context: process.cwd(),
     target,
     resolve: {
-      alias: { 'react-dom': '@hot-loader/react-dom' },
+      alias: {
+        'react-dom': '@hot-loader/react-dom',
+      },
     },
     devtool: IS_DEV ? 'cheap-module-source-map' : 'source-map',
     module: {
@@ -73,7 +74,6 @@ module.exports = (
             options: {
               babelrc: true,
               cacheDirectory: true,
-              presets: [],
             },
           },
         },
@@ -110,18 +110,18 @@ module.exports = (
       ],
     },
     plugins: [],
-    // optimization: {
-    //   splitChunks: {
-    //     automaticNameDelimiter: '-',
-    //     cacheGroups: {
-    //       vendor: {
-    //         name: 'vendor',
-    //         chunks: 'all',
-    //         test: /node_modules/,
-    //       },
-    //     },
-    //   },
-    // },
+    optimization: {
+      splitChunks: {
+        automaticNameDelimiter: '-',
+        cacheGroups: {
+          vendor: {
+            name: 'vendor',
+            chunks: 'all',
+            test: /node_modules/,
+          },
+        },
+      },
+    },
   };
 
   if (IS_NODE) {
@@ -184,17 +184,18 @@ module.exports = (
       },
     ];
 
-    config.plugins = [];
-
-    config.externals = nodeExternals({
-      whitelist: [
-        'webpack/hot/poll?1000',
-        /\.(eot|woff|woff2|ttf|otf)$/,
-        /\.(svg|png|jpg|jpeg|gif|ico)$/,
-        /\.(mp4|mp3|ogg|swf|webp)$/,
-        /\.(css|scss|sass|sss|less)$/,
-      ].filter(x => x),
-    });
+    config.externals = [
+      '@loadable/component',
+      nodeExternals({
+        whitelist: [
+          'webpack/hot/poll?1000',
+          /\.(eot|woff|woff2|ttf|otf)$/,
+          /\.(svg|png|jpg|jpeg|gif|ico)$/,
+          /\.(mp4|mp3|ogg|swf|webp)$/,
+          /\.(css|scss|sass|sss|less)$/,
+        ].filter(x => x),
+      }),
+    ];
 
     if (IS_NODE && IS_DEV) {
       config.watch = true;
@@ -270,13 +271,11 @@ module.exports = (
     ];
 
     config.plugins = [
+      ...config.plugins,
       new AssetsPlugin({
         path: paths.appDist,
         filename: 'assets.json',
       }),
-      // new ReactLoadablePlugin({
-      //   filename: `${paths.appDist}/react-loadable.json`,
-      // }),
     ];
 
     if (IS_WEB && IS_DEV) {

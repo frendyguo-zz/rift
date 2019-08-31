@@ -1,5 +1,4 @@
 import express from 'express';
-import Loadable from 'react-loadable';
 import logger from '../scripts/utils/logger';
 
 let app = require('./server').default;
@@ -16,7 +15,7 @@ if (module.hot) {
 }
 
 const port = process.env.PORT || 3000;
-export default Loadable.preloadAll().then(() => express()
+export default express()
   .use((req, res) => app.handle(req, res))
   .listen(port, (err) => {
     if (err) {
@@ -24,4 +23,4 @@ export default Loadable.preloadAll().then(() => express()
       return;
     }
     logger('log', `Server started on port ${port}!`);
-  }));
+  });

@@ -1,25 +1,15 @@
 #! /usr/bin/env node
-// const path = require('path');
 const fs = require('fs-extra');
 const webpack = require('webpack');
 const DevServer = require('webpack-dev-server');
 const clearConsole = require('react-dev-utils/clearConsole');
-// const chalk = require('react-dev-utils/chalk');
-// const checkRequiredFiles = require('react-dev-utils/checkRequiredFiles');
 const openBrowser = require('react-dev-utils/openBrowser');
-// const webpackDevServerUtils = require('react-dev-utils/WebpackDevServerUtils');
-// const getProcessForPort = require('react-dev-utils/getProcessForPort');
 const {
   choosePort,
-  // createCompiler,
-  // prepareProxy,
   prepareUrls,
 } = require('react-dev-utils/WebpackDevServerUtils');
 const logger = require('./utils/logger');
 const paths = require('./configs/path');
-
-// const appDirectory = fs.realpathSync(process.cwd());
-
 
 async function setPorts() {
   const port = (process.env.PORT && parseInt(process.env.PORT, 10)) || 3000;
@@ -51,8 +41,6 @@ function main() {
   logger('log', 'Compiling...');
 
   const createConfig = require('../webpack.config');
-  // const testclientConfig = require('../webpack.client.config')();
-  // const testserverConfig = require('../webpack.server.config');
   const rift = { host: 'localhost', port: 3000 };
   const clientConfig = createConfig('web', 'dev', rift, null);
   const serverConfig = createConfig('node', 'dev', rift, null);
@@ -104,13 +92,6 @@ function main() {
   clientDevServer.listen(
     clientConfig.devServer.port,
     clientConfig.devServer.host,
-    // (err) => {
-    //   if (err) {
-    //     clearConsole();
-    //     logger('error', err);
-    //     process.exit(1);
-    //   }
-    // },
   );
 }
 
