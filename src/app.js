@@ -1,14 +1,8 @@
 import React from 'react';
+import loadable from 'loadable-components';
 import './app.scss';
 
-// const LoadingComponent = () => (
-//   <div>IS LOADING....</div>
-// );
-
-// const AsyncComponent = () => Loadable({
-//   loader: () => import('./async-component' /* webpackChunkName: `asyncComponent` */),
-//   loading: LoadingComponent,
-// });
+const AsyncComponent = loadable(() => import(/* webpackChunkName: `asyncComponent` */ './async-component'));
 
 class App extends React.Component {
   componentDidMount() {}
@@ -17,6 +11,7 @@ class App extends React.Component {
     return (
       <div>
         <h1>Rift 123</h1>
+        <AsyncComponent />
       </div>
     );
   }

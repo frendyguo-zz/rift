@@ -1,11 +1,9 @@
 import express from 'express';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
-// import Loadable from 'react-loadable';
-// import { getBundles } from 'react-loadable/webpack';
+import { getLoadableState } from 'loadable-components/server';
 import App from './app';
 
-// const stats = require('../dist/react-loadable.json');
 const assets = require('../dist/assets.json');
 const initWDSProxy = require('../server/proxy').default;
 
@@ -22,14 +20,10 @@ app.get('/ping', (req, res) => {
 });
 
 app.get('*', async (req, res) => {
-  // const modules = [];
   const data = { foo: 'bar' };
-  const markup = renderToString(<App initialData={data} />);
-  // <Loadable.Capture report={moduleName => modules.push(moduleName)}>
-  // </Loadable.Capture>,
-  // );
-  // const bundles = getBundles(stats, modules);
-  // console.log(modules);
+  const jsx = <App initialData={data} />;
+  const loadableState = await getLoadableState(jsx);
+  const markup = renderToString(jsx);
 
   res.send(`
     <!doctype html>
@@ -44,11 +38,12 @@ app.get('*', async (req, res) => {
       <body>
         <script>window._INITIAL_DATA_ = ${JSON.stringify(data)};</script>
         <div id="root">${markup}</div>
+        ${loadableState.getScriptTag()}
         ${assets.client.js ? `<script src="${assets.client.js}" crossorigin></script>` : ''}
+        ${assets.vendor.js ? `<script src="${assets.vendor.js}" crossorigin></script>` : ''}
       </body>
     </html>
   `);
-  // ${assets.vendor.js ? `<script src="${assets.vendor.js}" crossorigin></script>` : ''}
 });
 
 export default app;

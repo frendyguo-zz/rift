@@ -19,12 +19,11 @@
     "@babel/plugin-proposal-class-properties": "^7.5.5",
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",
     "@babel/plugin-transform-async-to-generator": "^7.5.0",
+    "@babel/plugin-transform-react-jsx-source": "^7.5.0",
     "@babel/plugin-transform-runtime": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
     "@babel/preset-react": "^7.0.0",
     "@hot-loader/react-dom": "^16.9.0",
-    "@loadable/babel-plugin": "^5.10.0",
-    "@loadable/webpack-plugin": "^5.7.1",
     "assets-webpack-plugin": "^3.9.10",
     "autoprefixer": "^9.6.1",
     "babel-eslint": "^10.0.2",
@@ -46,7 +45,6 @@
     "postcss-loader": "^3.0.0",
     "postcss-preset-env": "^6.7.0",
     "prop-types": "^15.7.2",
-    "razzle-dev-utils": "^3.0.0",
     "react-dev-utils": "^9.0.3",
     "react-hot-loader": "^4.12.11",
     "resolve-url-loader": "^3.1.0",
@@ -63,14 +61,10 @@
     "webpack-node-externals": "^1.7.2"
   },
   "dependencies": {
-    "@loadable/component": "^5.10.2",
-    "@loadable/server": "^5.10.2",
     "chalk": "^2.4.2",
-    "ejs": "^2.6.2",
     "express": "^4.17.1",
     "loadable-components": "^2.2.3",
     "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-loadable": "^5.5.0"
+    "react-dom": "^16.8.6"
   }
 }
