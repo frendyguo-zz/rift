@@ -10,6 +10,7 @@ module.exports = {
   appPath: resolveApp('.'),
   appPublic: resolveApp('public'),
   appDist: resolveApp('dist'),
+  appDistPublic: resolveApp('dist/public'),
   appBabelRc: resolveApp('.babelrc'),
   appSrc: resolveApp('src'),
   appServerJs: resolveApp('server.js'),
