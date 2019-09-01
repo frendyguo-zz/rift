@@ -1,16 +1,16 @@
-# Rift
+# Rift (DEVELOPMENT)
 
 Rift is a universal React development framework. Rift aims to simplify React app development by hiding away high complexity configurations while also providing smooth developer experience such as create-react-app.
 
 Rift is highly inspired from [Jared Palmer](https://github.com/jaredpalmer)'s [Razzle](https://github.com/jaredpalmer/razzle), [Zeit](https://github.com/zeit)'s [Next.js](https://github.com/zeit/next.js/), [Tokopedia](https://github.com/tokopedia)'s [Treats](https://github.com/tokopedia/treats) and [Facebook](https://github.com/facebook)'s [create-react-app](https://github.com/facebook/create-react-app).
 
 ## What Rift comes with:
-- Hot Module Replacement (Hot Reload) 🔥
-- Server-side rendering 🌐
-- ES6 presets
+- Hot Module Replacement (Hot Reload) 🔥 ✅ 
+- Server-side rendering 🌐 ✅
+- ES6 presets ✅
 - Eslint and Prettier support
-- Supports multiple css modules such as LESS / SASS
-- Code-splitting support ✂
+- Supports multiple css modules such as LESS / SASS ✅
+- Code-splitting support ✂ ✅
 - Highly configurable webpack configurations
 - Built-in test environment such as Jest, enzyme, react-test-renderer 
 - Next.js like data fetching experience
