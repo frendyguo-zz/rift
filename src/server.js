@@ -8,7 +8,7 @@ const assets = require('../dist/assets.json');
 const initWDSProxy = require('../server/proxy').default;
 
 const app = express();
-app.use(express.static('public'));
+app.use(express.static(process.env.PUBLIC_DIR));
 
 if (!global.__WDS_PROXY__) {
   initWDSProxy();

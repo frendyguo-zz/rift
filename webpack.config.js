@@ -4,8 +4,11 @@ const AssetsPlugin = require('assets-webpack-plugin');
 const ExtractChunksPlugin = require('extract-css-chunks-webpack-plugin');
 const nodeExternals = require('webpack-node-externals');
 const WebpackStartServerPlugin = require('start-server-webpack-plugin');
+const TerserJSPlugin = require('terser-webpack-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const paths = require('./scripts/configs/path');
 const logger = require('./scripts/utils/logger');
+const { getEnvironmentVariables } = require('./scripts/configs/env'); // eslint-disable-line
 
 
 const publicPath = '/__WDS__/';
@@ -39,6 +42,7 @@ module.exports = (
   const IS_NODE = target === 'node';
   const IS_DEV = env === 'dev';
   // const IS_PROD = env === 'prod';
+  const dotenv = getEnvironmentVariables(target);
 
   const hasBabelRc = fs.existsSync(paths.appBabelRc);
   // const mainBabelOptions = {
@@ -121,6 +125,12 @@ module.exports = (
           },
         },
       },
+      minimizer: IS_DEV
+        ? []
+        : [
+          new TerserJSPlugin({}),
+          new OptimizeCSSAssetsPlugin({}),
+        ],
     },
   };
 
@@ -195,6 +205,10 @@ module.exports = (
           /\.(css|scss|sass|sss|less)$/,
         ].filter(x => x),
       }),
+    ];
+
+    config.plugins = [
+      new webpack.DefinePlugin(dotenv.stringified),
     ];
 
     if (IS_NODE && IS_DEV) {
@@ -278,7 +292,7 @@ module.exports = (
       }),
     ];
 
-    if (IS_WEB && IS_DEV) {
+    if (IS_DEV) {
       config.entry = {
         client: [
           'react-hot-loader/patch',
@@ -309,16 +323,24 @@ module.exports = (
         clientLogLevel: 'none',
       };
 
-      config.plugins.push(
-        new ExtractChunksPlugin({
-          filename: '[name].css',
-          chunkFilename: '[name].css',
-          cssModules: true,
-          hot: true,
-          orderWarning: true,
-          reloadAll: true,
-        }),
-      );
+      config.plugins = [
+        ...config.plugins,
+        new webpack.DefinePlugin(dotenv.stringified),
+      ];
+    } else {
+      config.entry = {
+        client: [
+          paths.appClientIndex,
+        ],
+      };
+
+      config.output = {
+        path: paths.appDist,
+        publicPath: '/',
+        filename: 'static/js/[name].[chunkhash:8].js',
+        chunkFilename: 'static/js/[name].[chunkhash:8].chunk.js',
+        libraryTarget: 'var',
+      };
     }
   }
 
@@ -330,6 +352,17 @@ module.exports = (
       new webpack.WatchIgnorePlugin([paths.appAssetsManifest]),
     ];
   }
+
+  config.plugins.push(
+    new ExtractChunksPlugin({
+      filename: 'static/css/[name].css',
+      chunkFilename: 'static/css/[name].[chunkhash:8].chunk.css',
+      cssModules: true,
+      orderWarning: true,
+      hot: IS_DEV,
+      reloadAll: IS_DEV,
+    }),
+  );
 
   if (customWebpack) {
     config = {
