@@ -7,7 +7,7 @@
   "scripts": {
     "start": "node ./scripts/start",
     "build": "node ./scripts/build",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node ./scripts/test --env=jsdom"
   },
   "keywords": [
     "react",
@@ -31,7 +31,9 @@
     "assets-webpack-plugin": "^3.9.10",
     "autoprefixer": "^9.6.1",
     "babel-eslint": "^10.0.2",
+    "babel-jest": "^24.9.0",
     "babel-loader": "^8.0.6",
+    "babel-preset-react-app": "^9.0.1",
     "css-loader": "^1.0.1",
     "eslint": "^5.16.0",
     "eslint-config-airbnb": "^17.1.1",
@@ -43,7 +45,7 @@
     "fs-extra": "^8.1.0",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
-    "http-proxy-middleware": "^0.19.1",
+    "jest": "^24.9.0",
     "node-sass": "^4.12.0",
     "postcss-flexbugs-fixes": "^4.1.0",
     "postcss-loader": "^3.0.0",
@@ -67,6 +69,7 @@
   "dependencies": {
     "chalk": "^2.4.2",
     "express": "^4.17.1",
+    "http-proxy-middleware": "^0.19.1",
     "loadable-components": "^2.2.3",
     "optimize-css-assets-webpack-plugin": "^5.0.3",
     "react": "^16.8.6",

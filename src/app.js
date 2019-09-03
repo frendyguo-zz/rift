@@ -10,7 +10,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <h1>Rift 12345</h1>
+        <h1>Rift</h1>
         <AsyncComponent />
       </div>
     );

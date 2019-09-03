@@ -19,6 +19,6 @@ module.exports = {
   appNodeModules: resolveApp('node_modules'),
   appClientIndex: resolveApp('src/client'),
   appServerIndex: resolveApp('src/index'),
+  appTestSetups: resolveApp('src/setupTests'),
   appRiftConfig: resolveApp('rift.config.js'),
-  // zz: resolveOwn('server.js'),
 };
