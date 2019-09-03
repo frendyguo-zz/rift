@@ -1,5 +1,6 @@
 import React from 'react';
 import loadable from 'loadable-components';
+import './app.less';
 import './app.scss';
 
 const AsyncComponent = loadable(() => import(/* webpackChunkName: `asyncComponent` */ './async-component'));

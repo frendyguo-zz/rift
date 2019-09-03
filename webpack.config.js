@@ -192,6 +192,27 @@ module.exports = (
           },
         ],
       },
+      {
+        test: /\.less$/,
+        use: [
+          {
+            loader: 'css-loader/locals',
+            options: {
+              modules: true,
+              importLoaders: 1,
+              localIdentName: '[name]__[local]___[hash:base64:5]',
+              sourceMap: true,
+            },
+          },
+          {
+            loader: 'postcss-loader',
+            options: postCssOptions,
+          },
+          {
+            loader: 'less-loader',
+          },
+        ],
+      },
     ];
 
     config.externals = [
@@ -279,6 +300,31 @@ module.exports = (
           },
           {
             loader: 'sass-loader',
+          },
+        ],
+      },
+      {
+        test: /\.less$/,
+        use: [
+          {
+            loader: ExtractChunksPlugin.loader,
+            options: {
+              publicPath,
+              hot: true,
+              reloadAll: true, // when desperation kicks in - this is a brute force HMR flag
+            },
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true,
+              importLoaders: 1,
+              localIdentName: '[name]__[local]___[hash:base64:5]',
+              sourceMap: true,
+            },
+          },
+          {
+            loader: 'less-loader',
           },
         ],
       },
