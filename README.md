@@ -11,7 +11,7 @@ Rift is highly inspired from [Jared Palmer](https://github.com/jaredpalmer)'s [R
 - Eslint and Prettier support
 - Supports multiple css modules such as LESS / SASS ✅
 - Code-splitting support ✂ ✅
-- Highly configurable webpack configurations
+- Highly configurable webpack configurations ✅
 - Built-in Jest testing environment ✅
 - Next.js like data fetching experience
 - SVG, fonts, image files support ✅
