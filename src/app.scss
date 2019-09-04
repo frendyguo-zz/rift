@@ -1,6 +1,24 @@
 $primary-color: #FFFFFF;
 $secondary-color: #222222;
 
+@font-face {
+  font-family: 'Rubik';
+  src: url('./rubik-font.ttf');
+}
+
 body {
+  background-color: $primary-color;
   color: $secondary-color;
+  font-family: 'Rubik', 'sans-serif';
+}
+
+.appMain-reactLogo {
+  width: 50px;
+}
+
+.appMain-webpackLogo {
+  width: 100px;
+  height: 100px;
+  background: url('./webpack-logo.png') no-repeat;
+  background-size: contain;
 }

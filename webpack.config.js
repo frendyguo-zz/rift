@@ -10,8 +10,6 @@ const paths = require('./scripts/configs/path');
 const logger = require('./scripts/utils/logger');
 const { getEnvironmentVariables } = require('./scripts/configs/env'); // eslint-disable-line
 
-
-const publicPath = '/__WDS__/';
 const postCssOptions = {
   ident: 'postcss',
   plugins: () => [
@@ -41,7 +39,9 @@ module.exports = (
   const IS_WEB = target === 'web';
   const IS_NODE = target === 'node';
   const IS_DEV = env === 'dev';
-  // const IS_PROD = env === 'prod';
+  const IS_PROD = env === 'prod';
+
+  const publicPath = IS_PROD ? '/' : '/__WDS__/';
   const dotenv = getEnvironmentVariables(target);
 
   const hasBabelRc = fs.existsSync(paths.appBabelRc);
@@ -98,6 +98,7 @@ module.exports = (
           ],
           loader: require.resolve('file-loader'),
           options: {
+            publicPath,
             name: 'static/media/[name].[hash:8].[ext]',
             emitFile: true,
           },
@@ -266,7 +267,7 @@ module.exports = (
           {
             loader: 'css-loader',
             options: {
-              modules: true,
+              modules: false,
               importLoaders: 1,
               localIdentName: '[name]__[local]___[hash:base64:5]',
               sourceMap: true,
@@ -292,7 +293,7 @@ module.exports = (
           {
             loader: 'css-loader',
             options: {
-              modules: true,
+              modules: false,
               importLoaders: 1,
               localIdentName: '[name]__[local]___[hash:base64:5]',
               sourceMap: true,
@@ -317,7 +318,7 @@ module.exports = (
           {
             loader: 'css-loader',
             options: {
-              modules: true,
+              modules: false,
               importLoaders: 1,
               localIdentName: '[name]__[local]___[hash:base64:5]',
               sourceMap: true,
@@ -335,6 +336,14 @@ module.exports = (
       new AssetsPlugin({
         path: paths.appDist,
         filename: 'assets.json',
+      }),
+      new ExtractChunksPlugin({
+        filename: 'static/css/[name].css',
+        chunkFilename: 'static/css/[name].css',
+        cssModules: true,
+        orderWarning: true,
+        hot: IS_DEV,
+        reloadAll: IS_DEV,
       }),
     ];
 
@@ -398,17 +407,6 @@ module.exports = (
       new webpack.WatchIgnorePlugin([paths.appAssetsManifest]),
     ];
   }
-
-  config.plugins.push(
-    new ExtractChunksPlugin({
-      filename: 'static/css/[name].css',
-      chunkFilename: 'static/css/[name].[chunkhash:8].chunk.css',
-      cssModules: true,
-      orderWarning: true,
-      hot: IS_DEV,
-      reloadAll: IS_DEV,
-    }),
-  );
 
   if (customWebpack) {
     config = {

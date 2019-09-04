@@ -1,6 +1,6 @@
 import React from 'react';
 import loadable from 'loadable-components';
-import './app.less';
+import ReactLogo from './react.svg';
 import './app.scss';
 
 const AsyncComponent = loadable(() => import(/* webpackChunkName: `asyncComponent` */ './async-component'));
@@ -10,7 +10,9 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="appMain">
+        <img className="appMain-reactLogo" alt="React Logo" src={ReactLogo} />
+        <div className="appMain-webpackLogo" />
         <h1>Rift</h1>
         <AsyncComponent />
       </div>
