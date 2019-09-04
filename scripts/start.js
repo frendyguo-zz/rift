@@ -40,8 +40,21 @@ function main() {
   clearConsole();
   logger('log', 'Compiling...');
 
+  let rift = {};
+  if (fs.existsSync(paths.appRiftConfig)) {
+    try {
+      rift = require(paths.appRiftConfig); // eslint-disable-line
+    } catch (e) {
+      clearConsole();
+      logger('error', `Error resolving rift.config.js file ${e.toString()}`);
+      logger.error('Invalid razzle.config.js file.', e);
+      process.exit(1);
+    }
+  } else {
+    logger('log', 'rift.config.js not found.');
+  }
+
   const createConfig = require('../webpack.config');
-  const rift = { host: 'localhost', port: 3000 };
   const clientConfig = createConfig('web', 'dev', rift, null);
   const serverConfig = createConfig('node', 'dev', rift, null);
 

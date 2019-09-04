@@ -30,9 +30,7 @@ module.exports = (
   {
     host = 'localhost',
     port = 3000,
-    // modify,
-    // plugins,
-    // modifyBabelOptions,
+    modify,
   },
   customWebpack,
 ) => {
@@ -45,16 +43,9 @@ module.exports = (
   const dotenv = getEnvironmentVariables(target);
 
   const hasBabelRc = fs.existsSync(paths.appBabelRc);
-  // const mainBabelOptions = {
-  //   babelrc: true,
-  //   cacheDirectory: true,
-  //   presets: [],
-  // };
   if (!hasBabelRc) {
-    // TODO : Add predefined .babelrc
-  }
-
-  if (hasBabelRc && IS_NODE) {
+    // TODO: Add predefined .babelrc
+  } else if (hasBabelRc && IS_NODE) {
     logger('log', 'Using .babelrc defined in your app');
   }
 
@@ -413,6 +404,12 @@ module.exports = (
       ...config,
       ...customWebpack,
     };
+  }
+
+  // Check if rift.config has a modify function. If it does, call it on the
+  // configs we created.
+  if (modify) {
+    config = modify(config, { target, dev: IS_DEV }, customWebpack);
   }
 
   return config;
