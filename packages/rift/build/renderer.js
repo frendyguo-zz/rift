@@ -27,9 +27,9 @@ var _url = _interopRequireDefault(require("url"));
 
 var _getInitialData = _interopRequireDefault(require("./getInitialData"));
 
-var _document = _interopRequireDefault(require("./_document"));
+var _Document = _interopRequireDefault(require("./Document"));
 
-var _app = _interopRequireDefault(require("./_app"));
+var _RiftApp = _interopRequireDefault(require("./RiftApp"));
 
 var _jsxFileName = "/Users/frendyguo/Developments/rift/packages/rift/src/renderer.js";
 
@@ -50,7 +50,7 @@ function () {
         switch (_context2.prev = _context2.next) {
           case 0:
             req = options.req, res = options.res, routes = options.routes, assets = options.assets, rest = (0, _objectWithoutProperties2["default"])(options, ["req", "res", "routes", "assets"]);
-            Doc = _document["default"];
+            Doc = _Document["default"];
             context = {};
 
             renderPage =
@@ -72,7 +72,7 @@ function () {
                             lineNumber: 21
                           }
                         }, // eslint-disable-next-line no-use-before-define
-                        _react["default"].createElement(_app["default"], {
+                        _react["default"].createElement(_RiftApp["default"], {
                           routes: routes,
                           data: data,
                           __source: {

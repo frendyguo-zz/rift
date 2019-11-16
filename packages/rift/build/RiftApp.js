@@ -33,7 +33,7 @@ var _reactRouterDom = require("react-router-dom");
 
 var _getInitialData = _interopRequireDefault(require("./getInitialData"));
 
-var _jsxFileName = "/Users/frendyguo/Developments/rift/packages/rift/src/_app.js";
+var _jsxFileName = "/Users/frendyguo/Developments/rift/packages/rift/src/RiftApp.js";
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 

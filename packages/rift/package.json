@@ -7,8 +7,8 @@
   "main": "build/index.js",
   "files": [
     "build",
-    "_app.js",
-    "_document.js",
+    "RiftApp.js",
+    "Document.js",
     "asyncComponent.js",
     "getInitialData.js",
     "initProxy.js",

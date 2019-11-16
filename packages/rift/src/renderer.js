@@ -3,8 +3,8 @@ import ReactDOMServer from 'react-dom/server';
 import { matchPath, StaticRouter } from 'react-router-dom';
 import url from 'url';
 import getInitialData from './getInitialData';
-import RiftDocument from './_document';
-import RiftApp from './_app';
+import RiftDocument from './Document';
+import RiftApp from './RiftApp';
 
 export default async (options) => {
   const {
