@@ -21,7 +21,7 @@
     "prop-types": "^15.7.2"
   },
   "dependencies": {
-    "@frendyguo/rift": "^1.0.1",
+    "@frendyguo/rift": "^1.0.2",
     "express": "^4.17.1",
     "loadable-components": "^2.2.3",
     "react": "^16.8.6",
