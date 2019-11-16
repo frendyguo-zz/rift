@@ -1,13 +1,16 @@
 import express from 'express';
-import React from 'react';
-import { renderToString } from 'react-dom/server';
-import { getLoadableState } from 'loadable-components/server';
-import App from './app';
+// import React from 'react';
+// import { renderToString } from 'react-dom/server';
+// import { getLoadableState } from 'loadable-components/server';
+// import App from './app';
+import renderer from '../lib/renderer';
+import routes from './routes';
 
 const assets = require('../dist/assets.json');
 const initWDSProxy = require('../server/proxy').default;
 
 const app = express();
+app.use(express.static(process.env.PUBLIC_PATH));
 app.use(express.static(process.env.PUBLIC_DIR));
 
 if (!global.__WDS_PROXY__) {
@@ -20,30 +23,26 @@ app.get('/ping', (req, res) => {
 });
 
 app.get('*', async (req, res) => {
-  const data = { foo: 'bar' };
-  const jsx = <App initialData={data} />;
-  const loadableState = await getLoadableState(jsx);
-  const markup = renderToString(jsx);
+  try {
+    const html = await renderer({
+      req,
+      res,
+      routes,
+      assets,
+      customThing: 'thing',
+    });
+    res.send(html);
+  } catch (err) {
+    console.error(err);
+    res.json({ message: err.message, stack: err.stack });
+  }
 
-  res.send(`
-    <!doctype html>
-    <html lang="">
-      <head>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta charSet='utf-8' />
-        <title>Welcome to Rift</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        ${assets.client.css ? `<link rel="stylesheet" href="${assets.client.css}">` : ''}
-      </head>
-      <body>
-        <script>window._INITIAL_DATA_ = ${JSON.stringify(data)};</script>
-        <div id="root">${markup}</div>
-        ${loadableState.getScriptTag()}
-        ${assets.client.js ? `<script src="${assets.client.js}" crossorigin></script>` : ''}
-        ${assets.vendor.js ? `<script src="${assets.vendor.js}" crossorigin></script>` : ''}
-      </body>
-    </html>
-  `);
+  // RiftRender
+  // 1. Create Switch Route jsx renderPage method
+  // 2. Fetch data from component's getInitialData method
+  // 3. Create Document jsx
+  // 4. Call renderPage in Document getInitialProps
+  // 5. renderer should return html string here.
 });
 
 export default app;

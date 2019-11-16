@@ -1,27 +1,41 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
-import { loadComponents } from 'loadable-components';
-import App from './app';
+import { BrowserRouter, matchPath } from 'react-router-dom';
+import routes from './routes';
+import RiftApp from '../lib/_app';
 
-const data = window._INITIAL_DATA_; // eslint-disable-line
+/* global document */
+/* global window */
+const awaitData = async () => {
+  await Promise.all(
+    routes.map((route) => {
+      const match = matchPath(window.location.pathname, route);
+      if (match && route.component && route.component.load) {
+        return route.component.load();
+      }
+      return undefined;
+    }),
+  );
 
-const render = (Comp) => {
-  loadComponents().then(() => {
-    ReactDOM.hydrate(
-      <AppContainer>
-        <Comp initialData={data} />
-      </AppContainer>,
-      document.getElementById('root'),
-    );
-  });
+  let data;
+  // eslint-disable-next-line valid-typeof
+  if (typeof window !== undefined && !!document) {
+    // Deserializing data
+    data = eval(`(${document.getElementById('__RIFT_DATA__').textContent})`); // eslint-disable-line
+  }
+  return Promise.resolve(data);
 };
 
-render(App);
+awaitData().then(data => ReactDOM.hydrate(
+  <AppContainer>
+    <BrowserRouter>
+      <RiftApp data={data} routes={routes} />
+    </BrowserRouter>
+  </AppContainer>,
+  document.getElementById('root'),
+));
 
 if (module.hot) {
-  module.hot.accept('./app', () => {
-    const NewApp = require('./app').default;
-    render(NewApp);
-  });
+  module.hot.accept();
 }

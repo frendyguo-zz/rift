@@ -15,7 +15,7 @@ function getEnvironmentVariables(target) {
         VERBOSE: !!process.env.VERBOSE,
         HOST: process.env.HOST || 'localhost',
         BUILD_TARGET: target === 'web' ? 'client' : 'server',
-        PUBLIC_PATH: process.env.PUBLIC_PATH || '/',
+        PUBLIC_PATH: process.env.PUBLIC_PATH || 'public',
         PUBLIC_DIR: process.env.NODE_ENV === 'production'
           ? paths.appDist
           : '__WDS__',

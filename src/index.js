@@ -4,6 +4,7 @@ import logger from '../scripts/utils/logger';
 let app = require('./server').default;
 
 if (module.hot) {
+  console.log('module hot accepting');
   module.hot.accept('./server', () => {
     logger('log', 'HMR Server-side enabled!');
     try {
