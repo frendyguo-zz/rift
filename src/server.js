@@ -36,13 +36,6 @@ app.get('*', async (req, res) => {
     console.error(err);
     res.json({ message: err.message, stack: err.stack });
   }
-
-  // RiftRender
-  // 1. Create Switch Route jsx renderPage method
-  // 2. Fetch data from component's getInitialData method
-  // 3. Create Document jsx
-  // 4. Call renderPage in Document getInitialProps
-  // 5. renderer should return html string here.
 });
 
 export default app;
