@@ -13,7 +13,7 @@ Rift is highly inspired from [Jared Palmer](https://github.com/jaredpalmer)'s [R
 - Highly configurable webpack configurations ✅
 - Built-in Jest testing environment ✅
 - SVG, fonts, image files support ✅
-- Next.js like data fetching experience
+- Next.js like data fetching experience ✅
 
 ## What's coming next:
 - Optional GraphQL support
