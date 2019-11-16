@@ -24,6 +24,9 @@ module.exports = {
   rules: {
     "global-require": "off",
     "no-underscore-dangle": "off",
+    "react/no-danger": "off",
+    "react/prop-types": "off",
+    "react/no-did-update-set-state": "off",
     "react/jsx-filename-extension": [0],
     "import/no-extraneous-dependencies": "off",
   },
