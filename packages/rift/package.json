@@ -4,7 +4,9 @@
   "version": "1.0.4",
   "description": "Rift",
   "license": "MIT",
+  "main": "build/index.js",
   "files": [
+    "build",
     "_app.js",
     "_document.js",
     "asyncComponent.js",
