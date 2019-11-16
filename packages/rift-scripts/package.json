@@ -10,7 +10,7 @@
     "scripts"
   ],
   "bin": {
-    "rift": "./bin/index.js"
+    "rift-scripts": "./bin/index.js"
   },
   "keywords": [
     "rift",
