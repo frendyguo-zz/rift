@@ -1,8 +1,4 @@
 import express from 'express';
-// import React from 'react';
-// import { renderToString } from 'react-dom/server';
-// import { getLoadableState } from 'loadable-components/server';
-// import App from './app';
 import renderer from '../lib/renderer';
 import routes from './routes';
 
