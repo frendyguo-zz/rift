@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "Rift example",
   "scripts": {
-    "start": "rift start",
-    "build": "rift build",
-    "test": "rift test --env=jsdom"
+    "start": "rift-scripts start",
+    "build": "rift-scripts build",
+    "test": "rift-scripts test --env=jsdom"
   },
   "keywords": [
     "react",
@@ -21,13 +21,11 @@
     "prop-types": "^15.7.2"
   },
   "dependencies": {
-    "@frendyguo/rift": "^1.0.2",
+    "@frendyguo/rift": "^1.0.6",
     "@frendyguo/rift-scripts": "^1.0.2",
     "express": "^4.17.1",
-    "loadable-components": "^2.2.3",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-router-dom": "^5.0.1",
-    "serialize-javascript": "^2.1.0"
+    "react-router-dom": "^5.0.1"
   }
 }

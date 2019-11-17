@@ -1,9 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { AppContainer } from 'react-hot-loader';
+import { RiftApp } from '@frendyguo/rift';
 import { BrowserRouter, matchPath } from 'react-router-dom';
 import routes from './routes';
-import RiftApp from '../../../lib/_app';
 
 /* global document */
 /* global window */
@@ -28,11 +27,9 @@ const awaitData = async () => {
 };
 
 awaitData().then(data => ReactDOM.hydrate(
-  <AppContainer>
-    <BrowserRouter>
-      <RiftApp data={data} routes={routes} />
-    </BrowserRouter>
-  </AppContainer>,
+  <BrowserRouter>
+    <RiftApp data={data} routes={routes} />
+  </BrowserRouter>,
   document.getElementById('root'),
 ));
 

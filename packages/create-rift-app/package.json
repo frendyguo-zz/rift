@@ -1,0 +1,32 @@
+{
+  "name": "create-rift-app",
+  "author": "Frendy Guo <guofrendy@gmail.com>",
+  "version": "1.0.0",
+  "description": "Create Rift App template generator",
+  "license": "MIT",
+  "bin": {
+    "create-rift-app": "./bin/index.js"
+  },
+  "keywords": [
+    "cra",
+    "template",
+    "generator",
+    "rift"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:frendyguo/rift.git",
+    "directory": "packages/create-rift-app"
+  },
+  "scripts": {
+    "test": "echo \"No test specified\""
+  },
+  "dependencies": {
+    "chalk": "^3.0.0",
+    "commander": "^4.0.1",
+    "cross-spawn": "^7.0.1",
+    "execa": "^3.3.0",
+    "fs-extra": "^8.1.0",
+    "promise": "^8.0.3"
+  }
+}

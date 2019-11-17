@@ -1,6 +1,8 @@
 import express from 'express';
-import renderer from '../../../lib/renderer';
-import initProxy from '../../../lib/initProxy';
+import {
+  renderer,
+  initProxy,
+} from '@frendyguo/rift';
 import routes from './routes';
 
 const assets = require('../dist/assets.json');

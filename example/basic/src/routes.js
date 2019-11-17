@@ -1,5 +1,5 @@
 import Home from './Home';
-import asyncComponent from '../../../lib/asyncComponent';
+import { asyncComponent } from '@frendyguo/rift';
 
 export default [
   {

@@ -6,7 +6,7 @@ process.on('unhandledRejection', (err) => {
   throw err;
 });
 
-const spawn = require('../node_modules/react-dev-utils/crossSpawn');
+const spawn = require('react-dev-utils/crossSpawn');
 
 const args = process.argv.slice(2);
 
