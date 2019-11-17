@@ -1,6 +1,6 @@
 module.exports = {
-  _app: require('./build/_app')._app,
-  _document: require('./build/_document')._document,
+  _app: require('./build/RiftApp').RiftApp,
+  _document: require('./build/Document').Document,
   asyncComponent: require('./build/asyncComponent').asyncComponent,
   getInitialData: require('./build/getInitialData').getInitialData,
   initProxy: require('./build/initProxy').initProxy,

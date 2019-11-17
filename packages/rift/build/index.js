@@ -11,16 +11,16 @@ Object.defineProperty(exports, "_404", {
     return _["default"];
   }
 });
-Object.defineProperty(exports, "_app", {
+Object.defineProperty(exports, "RiftApp", {
   enumerable: true,
   get: function get() {
-    return _app2["default"];
+    return _RiftApp["default"];
   }
 });
-Object.defineProperty(exports, "_document", {
+Object.defineProperty(exports, "Document", {
   enumerable: true,
   get: function get() {
-    return _document2["default"];
+    return _Document["default"];
   }
 });
 Object.defineProperty(exports, "asyncComponent", {
@@ -50,9 +50,9 @@ Object.defineProperty(exports, "renderer", {
 
 var _ = _interopRequireDefault(require("./_404"));
 
-var _app2 = _interopRequireDefault(require("./_app"));
+var _RiftApp = _interopRequireDefault(require("./RiftApp"));
 
-var _document2 = _interopRequireDefault(require("./_document"));
+var _Document = _interopRequireDefault(require("./Document"));
 
 var _asyncComponent = _interopRequireDefault(require("./asyncComponent"));
 
