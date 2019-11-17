@@ -3,7 +3,7 @@ import express from 'express';
 let app = require('./server').default;
 
 if (module.hot) {
-  console.log('module hot accepting');
+  console.log('Accepting module.hot');
   module.hot.accept('./server', () => {
     console.log('HMR Server-side enabled!');
     try {
@@ -22,5 +22,5 @@ export default express()
       console.error('error', err);
       return;
     }
-    console.log('log', `Server started on port ${port}!`);
+    console.log(`Server started on port ${port}!`);
   });
