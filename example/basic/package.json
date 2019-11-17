@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "@frendyguo/rift": "^1.0.6",
-    "@frendyguo/rift-scripts": "^1.0.2",
+    "@frendyguo/rift-scripts": "^1.0.3",
     "express": "^4.17.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
