@@ -56,6 +56,9 @@ module.exports = (
   }
 
   let config = {
+    node: {
+      fs: 'empty',
+    },
     mode: IS_DEV ? 'development' : 'production',
     context: process.cwd(),
     target,
@@ -131,6 +134,7 @@ module.exports = (
 
   if (IS_NODE) {
     config.node = {
+      fs: 'empty',
       __console: false,
       __dirname: false,
       __filename: false,
