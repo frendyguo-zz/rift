@@ -1,7 +1,7 @@
 {
   "name": "create-rift-app",
   "author": "Frendy Guo <guofrendy@gmail.com>",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Create Rift App template generator",
   "license": "MIT",
   "bin": {
