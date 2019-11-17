@@ -26,6 +26,9 @@ module.exports = (resolve, rootDir) => {
       '^(?!.*\\.(js|jsx|mjs|css|json)$)': resolve('configs/jest/fileTransform.js'),
     },
     transformIgnorePatterns: ['[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs)$'],
+    watchPathIgnorePatterns: [
+      '<rootDir>/node_modules',
+    ],
   };
   if (rootDir) {
     config.rootDir = rootDir;
