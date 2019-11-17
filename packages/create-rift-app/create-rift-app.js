@@ -120,9 +120,7 @@ module.exports = function createRiftApp(opts) {
   }
 
   const projectPath = `${process.cwd()}/${projectName}`;
-  console.log('project path', projectPath);
-  const templatePath = path.resolve(__dirname, '../../example/basic');
-  console.log('template path', templatePath);
+  const templatePath = path.resolve(__dirname, './templates/basic');
   const options = {
     templatePath: templatePath,
     projectPath: projectPath,
