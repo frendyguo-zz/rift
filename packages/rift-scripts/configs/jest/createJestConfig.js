@@ -21,9 +21,9 @@ module.exports = (resolve, rootDir) => {
     testEnvironment: 'node',
     testURL: 'http://localhost',
     transform: {
-      '^.+\\.(js|jsx|mjs)$': resolve('scripts/configs/jest/babelTransform.js'),
-      '^.+\\.css$': resolve('scripts/configs/jest/cssTransform.js'),
-      '^(?!.*\\.(js|jsx|mjs|css|json)$)': resolve('scripts/configs/jest/fileTransform.js'),
+      '^.+\\.(js|jsx|mjs)$': resolve('configs/jest/babelTransform.js'),
+      '^.+\\.css$': resolve('configs/jest/cssTransform.js'),
+      '^(?!.*\\.(js|jsx|mjs|css|json)$)': resolve('configs/jest/fileTransform.js'),
     },
     transformIgnorePatterns: ['[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs)$'],
   };
