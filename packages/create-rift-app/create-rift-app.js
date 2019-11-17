@@ -132,7 +132,7 @@ module.exports = function createRiftApp(opts) {
       return install({
         projectName: options.projectName,
         projectPath: options.projectPath,
-        packages: ['react', 'react-dom', 'react-router-dom', 'express', '@frendyguo/rift-scripts'],
+        packages: ['react', 'react-dom', 'react-router-dom', 'express', '@frendyguo/rift', '@frendyguo/rift-scripts'],
       });
     })
     .then(function () {

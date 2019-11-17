@@ -21,8 +21,8 @@
     "prop-types": "^15.7.2"
   },
   "dependencies": {
-    "@frendyguo/rift": "^1.0.7",
-    "@frendyguo/rift-scripts": "^1.0.5",
+    "@frendyguo/rift": "latest",
+    "@frendyguo/rift-scripts": "latest",
     "express": "^4.17.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
