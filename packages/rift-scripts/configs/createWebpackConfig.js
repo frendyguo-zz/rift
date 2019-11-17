@@ -43,8 +43,16 @@ module.exports = (
   const dotenv = getEnvironmentVariables(target);
 
   const hasBabelRc = fs.existsSync(paths.appBabelRc);
+  const babelOptions = {
+    babelrc: true,
+    cacheDirectory: true,
+    presets: [],
+  };
+
   if (!hasBabelRc) {
-    // TODO: Add predefined .babelrc
+    logger('log', 'No .babelrc found..');
+    logger('log', 'Using predefined babel options');
+    babelOptions.presets.push(require.resolve('./babel'));
   } else if (hasBabelRc && IS_NODE) {
     logger('log', 'Using .babelrc defined in your app');
   }
@@ -66,10 +74,7 @@ module.exports = (
           exclude: /node_modules/,
           use: {
             loader: 'babel-loader',
-            options: {
-              babelrc: true,
-              cacheDirectory: true,
-            },
+            options: babelOptions,
           },
         },
         {
