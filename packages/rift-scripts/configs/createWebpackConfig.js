@@ -50,8 +50,6 @@ module.exports = (
   };
 
   if (!hasBabelRc) {
-    logger('log', 'No .babelrc found..');
-    logger('log', 'Using predefined babel options');
     babelOptions.presets.push(require.resolve('./babel'));
   } else if (hasBabelRc && IS_NODE) {
     logger('log', 'Using .babelrc defined in your app');

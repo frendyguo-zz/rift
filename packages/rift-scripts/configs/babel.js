@@ -1,14 +1,16 @@
-module.exports = {
+const preset = {
   presets: [
-    '@babel/preset-env',
-    '@babel/preset-react',
+    [require.resolve('@babel/preset-env'), { modules: false }],
+    require.resolve('@babel/preset-react'),
   ],
   plugins: [
-    'react-hot-loader/babel',
-    '@babel/plugin-proposal-class-properties',
-    '@babel/plugin-syntax-dynamic-import',
-    '@babel/plugin-transform-async-to-generator',
-    '@babel/plugin-transform-runtime',
-    '@babel/plugin-transform-react-jsx-source',
+    require.resolve('react-hot-loader/babel'),
+    require.resolve('@babel/plugin-proposal-class-properties'),
+    require.resolve('@babel/plugin-syntax-dynamic-import'),
+    require.resolve('@babel/plugin-transform-async-to-generator'),
+    require.resolve('@babel/plugin-transform-runtime'),
+    require.resolve('@babel/plugin-transform-react-jsx-source'),
   ],
 };
+
+module.exports = () => preset;
