@@ -13,6 +13,8 @@ var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"))
 
 var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime/helpers/asyncToGenerator"));
 
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
+
 var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/classCallCheck"));
 
 var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/createClass"));
@@ -65,55 +67,56 @@ function (_Component) {
           assets = _this$props.assets,
           data = _this$props.data,
           helmet = _this$props.helmet;
-      return _react["default"].createElement("html", {
-        lang: "en",
+      var htmlAttrs = helmet.htmlAttributes.toComponent();
+      var bodyAttrs = helmet.bodyAttributes.toComponent();
+      return _react["default"].createElement("html", (0, _extends2["default"])({}, htmlAttrs, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 20
+          lineNumber: 23
         }
-      }, _react["default"].createElement("head", {
+      }), _react["default"].createElement("head", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 21
+          lineNumber: 24
         }
       }, _react["default"].createElement("meta", {
         httpEquiv: "X-UA-Compatible",
         content: "IE=edge",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 22
+          lineNumber: 25
         }
       }), _react["default"].createElement("meta", {
         charSet: "utf-8",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 23
+          lineNumber: 26
         }
       }), _react["default"].createElement("title", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 24
+          lineNumber: 27
         }
       }, "Welcome to Rift"), _react["default"].createElement("meta", {
         name: "viewport",
         content: "width=device-width, initial-scale=1",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 25
+          lineNumber: 28
         }
       }), helmet.title.toComponent(), helmet.meta.toComponent(), helmet.link.toComponent(), assets.client.css && _react["default"].createElement("link", {
         rel: "stylesheet",
         href: assets.client.css,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 30
-        }
-      })), _react["default"].createElement("body", {
-        __source: {
-          fileName: _jsxFileName,
           lineNumber: 33
         }
-      }, _react["default"].createElement("script", {
+      })), _react["default"].createElement("body", (0, _extends2["default"])({}, bodyAttrs, {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 36
+        }
+      }), _react["default"].createElement("script", {
         id: "__RIFT_DATA__",
         type: "application/json",
         dangerouslySetInnerHTML: {
@@ -121,13 +124,13 @@ function (_Component) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 34
+          lineNumber: 37
         }
       }), _react["default"].createElement("div", {
         id: "root",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 41
+          lineNumber: 44
         }
       }, "REPLACE_THIS_IN_RENDERER_METHOD"), assets.client.js && _react["default"].createElement("script", {
         type: "text/javascript",
@@ -136,7 +139,7 @@ function (_Component) {
         crossOrigin: "anonymouse",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 43
+          lineNumber: 46
         }
       }), assets.vendor.js && _react["default"].createElement("script", {
         src: assets.vendor.js,
@@ -144,7 +147,7 @@ function (_Component) {
         crossOrigin: "anonymouse",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 46
+          lineNumber: 49
         }
       })));
     }
