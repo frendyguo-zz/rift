@@ -13,6 +13,7 @@ export default class Document extends Component {
     const {
       assets,
       data,
+      helmet,
     } = this.props;
 
     return (
@@ -22,6 +23,9 @@ export default class Document extends Component {
           <meta charSet="utf-8" />
           <title>Welcome to Rift</title>
           <meta name="viewport" content="width=device-width, initial-scale=1" />
+          {helmet.title.toComponent()}
+          {helmet.meta.toComponent()}
+          {helmet.link.toComponent()}
           {
             assets.client.css && <link rel="stylesheet" href={assets.client.css} />
           }

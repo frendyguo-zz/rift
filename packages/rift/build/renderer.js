@@ -2,6 +2,8 @@
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
+var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -22,6 +24,8 @@ var _react = _interopRequireDefault(require("react"));
 var _server = _interopRequireDefault(require("react-dom/server"));
 
 var _reactRouterDom = require("react-router-dom");
+
+var _reactHelmet = _interopRequireWildcard(require("react-helmet"));
 
 var _url = _interopRequireDefault(require("url"));
 
@@ -59,7 +63,7 @@ function () {
               var _ref2 = (0, _asyncToGenerator2["default"])(
               /*#__PURE__*/
               _regenerator["default"].mark(function _callee() {
-                var content, html, statusCode, redirectTo;
+                var content, helmet, html, statusCode, redirectTo;
                 return _regenerator["default"].wrap(function _callee$(_context) {
                   while (1) {
                     switch (_context.prev = _context.next) {
@@ -69,7 +73,7 @@ function () {
                           context: context,
                           __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 21
+                            lineNumber: 22
                           }
                         }, // eslint-disable-next-line no-use-before-define
                         _react["default"].createElement(_RiftApp["default"], {
@@ -77,9 +81,10 @@ function () {
                           data: data,
                           __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 24
+                            lineNumber: 25
                           }
                         }));
+                        helmet = _reactHelmet["default"].renderStatic();
                         html = _server["default"].renderToString(content);
                         statusCode = context.statusCode, redirectTo = context.url;
 
@@ -92,10 +97,11 @@ function () {
                         }
 
                         return _context.abrupt("return", {
-                          html: html
+                          html: html,
+                          helmet: helmet
                         });
 
-                      case 6:
+                      case 7:
                       case "end":
                         return _context.stop();
                     }
@@ -156,6 +162,7 @@ function () {
               assets: assets,
               renderPage: renderPage,
               data: data,
+              helmet: _reactHelmet.Helmet.renderStatic(),
               match: reactRouterMatch
             }, rest));
 
@@ -166,7 +173,7 @@ function () {
             doc = _server["default"].renderToStaticMarkup(_react["default"].createElement(Doc, (0, _extends2["default"])({}, docProps, {
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 75
+                lineNumber: 78
               }
             })));
             return _context2.abrupt("return", "<!doctype html>".concat(doc.replace('REPLACE_THIS_IN_RENDERER_METHOD', html)));

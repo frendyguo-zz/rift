@@ -63,54 +63,55 @@ function (_Component) {
     value: function render() {
       var _this$props = this.props,
           assets = _this$props.assets,
-          data = _this$props.data;
+          data = _this$props.data,
+          helmet = _this$props.helmet;
       return _react["default"].createElement("html", {
         lang: "en",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 19
+          lineNumber: 20
         }
       }, _react["default"].createElement("head", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 20
+          lineNumber: 21
         }
       }, _react["default"].createElement("meta", {
         httpEquiv: "X-UA-Compatible",
         content: "IE=edge",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 21
+          lineNumber: 22
         }
       }), _react["default"].createElement("meta", {
         charSet: "utf-8",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 22
+          lineNumber: 23
         }
       }), _react["default"].createElement("title", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 23
+          lineNumber: 24
         }
       }, "Welcome to Rift"), _react["default"].createElement("meta", {
         name: "viewport",
         content: "width=device-width, initial-scale=1",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 24
+          lineNumber: 25
         }
-      }), assets.client.css && _react["default"].createElement("link", {
+      }), helmet.title.toComponent(), helmet.meta.toComponent(), helmet.link.toComponent(), assets.client.css && _react["default"].createElement("link", {
         rel: "stylesheet",
         href: assets.client.css,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 26
+          lineNumber: 30
         }
       })), _react["default"].createElement("body", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 29
+          lineNumber: 33
         }
       }, _react["default"].createElement("script", {
         id: "__RIFT_DATA__",
@@ -120,13 +121,13 @@ function (_Component) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 30
+          lineNumber: 34
         }
       }), _react["default"].createElement("div", {
         id: "root",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 37
+          lineNumber: 41
         }
       }, "REPLACE_THIS_IN_RENDERER_METHOD"), assets.client.js && _react["default"].createElement("script", {
         type: "text/javascript",
@@ -135,7 +136,7 @@ function (_Component) {
         crossOrigin: "anonymouse",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 39
+          lineNumber: 43
         }
       }), assets.vendor.js && _react["default"].createElement("script", {
         src: assets.vendor.js,
@@ -143,7 +144,7 @@ function (_Component) {
         crossOrigin: "anonymouse",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 42
+          lineNumber: 46
         }
       })));
     }
