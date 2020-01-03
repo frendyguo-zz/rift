@@ -16,8 +16,11 @@ export default class Document extends Component {
       helmet,
     } = this.props;
 
+    const htmlAttrs = helmet.htmlAttributes.toComponent();
+    const bodyAttrs = helmet.bodyAttributes.toComponent();
+
     return (
-      <html lang="en">
+      <html {...htmlAttrs}>
         <head>
           <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
           <meta charSet="utf-8" />
@@ -30,7 +33,7 @@ export default class Document extends Component {
             assets.client.css && <link rel="stylesheet" href={assets.client.css} />
           }
         </head>
-        <body>
+        <body {...bodyAttrs}>
           <script
             id="__RIFT_DATA__"
             type="application/json"
