@@ -2,8 +2,6 @@
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -25,7 +23,7 @@ var _server = _interopRequireDefault(require("react-dom/server"));
 
 var _reactRouterDom = require("react-router-dom");
 
-var _reactHelmet = _interopRequireWildcard(require("react-helmet"));
+var _reactHelmet = _interopRequireDefault(require("react-helmet"));
 
 var _url = _interopRequireDefault(require("url"));
 
@@ -63,7 +61,7 @@ function () {
               var _ref2 = (0, _asyncToGenerator2["default"])(
               /*#__PURE__*/
               _regenerator["default"].mark(function _callee() {
-                var content, helmet, html, statusCode, redirectTo;
+                var content, html, helmet, statusCode, redirectTo;
                 return _regenerator["default"].wrap(function _callee$(_context) {
                   while (1) {
                     switch (_context.prev = _context.next) {
@@ -84,8 +82,8 @@ function () {
                             lineNumber: 25
                           }
                         }));
-                        helmet = _reactHelmet["default"].renderStatic();
                         html = _server["default"].renderToString(content);
+                        helmet = _reactHelmet["default"].renderStatic();
                         statusCode = context.statusCode, redirectTo = context.url;
 
                         if (redirectTo) {
@@ -162,7 +160,7 @@ function () {
               assets: assets,
               renderPage: renderPage,
               data: data,
-              helmet: _reactHelmet.Helmet.renderStatic(),
+              helmet: _reactHelmet["default"].renderStatic(),
               match: reactRouterMatch
             }, rest));
 

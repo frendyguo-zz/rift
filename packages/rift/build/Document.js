@@ -92,29 +92,24 @@ function (_Component) {
           fileName: _jsxFileName,
           lineNumber: 26
         }
-      }), _react["default"].createElement("title", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 27
-        }
-      }, "Welcome to Rift"), _react["default"].createElement("meta", {
+      }), _react["default"].createElement("meta", {
         name: "viewport",
         content: "width=device-width, initial-scale=1",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 28
+          lineNumber: 27
         }
       }), helmet.title.toComponent(), helmet.meta.toComponent(), helmet.link.toComponent(), assets.client.css && _react["default"].createElement("link", {
         rel: "stylesheet",
         href: assets.client.css,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 33
+          lineNumber: 32
         }
       })), _react["default"].createElement("body", (0, _extends2["default"])({}, bodyAttrs, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 36
+          lineNumber: 35
         }
       }), _react["default"].createElement("script", {
         id: "__RIFT_DATA__",
@@ -124,13 +119,13 @@ function (_Component) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 37
+          lineNumber: 36
         }
       }), _react["default"].createElement("div", {
         id: "root",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 44
+          lineNumber: 43
         }
       }, "REPLACE_THIS_IN_RENDERER_METHOD"), assets.client.js && _react["default"].createElement("script", {
         type: "text/javascript",
@@ -139,7 +134,7 @@ function (_Component) {
         crossOrigin: "anonymouse",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 46
+          lineNumber: 45
         }
       }), assets.vendor.js && _react["default"].createElement("script", {
         src: assets.vendor.js,
@@ -147,7 +142,7 @@ function (_Component) {
         crossOrigin: "anonymouse",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 49
+          lineNumber: 48
         }
       })));
     }
