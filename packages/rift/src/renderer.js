@@ -26,8 +26,8 @@ export default async (options) => {
         }
       </StaticRouter>
     );
-    const helmet = Helmet.renderStatic();
     const html = ReactDOMServer.renderToString(content);
+    const helmet = Helmet.renderStatic();
     const { statusCode, url: redirectTo } = context;
     if (redirectTo) {
       res.redirect(statusCode || 301, redirectTo);
