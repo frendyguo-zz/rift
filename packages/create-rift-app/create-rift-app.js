@@ -48,9 +48,9 @@ function getInstallCmd() {
 
   try {
     execa.sync('yarnpkg', ['--version']);
-    cmd = 'yarn';
-  } catch (e) {
     cmd = 'npm';
+  } catch (e) {
+    cmd = 'yarn';
   }
 
   return cmd;
