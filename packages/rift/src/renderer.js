@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import { matchPath, StaticRouter } from 'react-router-dom';
-import ReactHelmet, { Helmet } from 'react-helmet';
+import Helmet from 'react-helmet';
 import url from 'url';
 import getInitialData from './getInitialData';
 import RiftDocument from './Document';
@@ -26,7 +26,7 @@ export default async (options) => {
         }
       </StaticRouter>
     );
-    const helmet = ReactHelmet.renderStatic();
+    const helmet = Helmet.renderStatic();
     const html = ReactDOMServer.renderToString(content);
     const { statusCode, url: redirectTo } = context;
     if (redirectTo) {
