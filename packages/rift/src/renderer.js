@@ -13,12 +13,16 @@ export default async (options) => {
     res,
     routes,
     assets,
+    customDocument,
+    customRenderer,
     ...rest
   } = options;
-  const Doc = RiftDocument;
+  const Doc = customDocument || RiftDocument;
   const context = {};
   const renderPage = async () => {
-    const content = (
+    const defaultRenderer = (element) => ReactDOMServer.renderToString(element);
+    const renderer = customRenderer || defaultRenderer;
+    const node = (
       <StaticRouter location={req.url} context={context}>
         {
           // eslint-disable-next-line no-use-before-define
@@ -26,7 +30,7 @@ export default async (options) => {
         }
       </StaticRouter>
     );
-    const html = ReactDOMServer.renderToString(content);
+    const html = renderer(node);
     const helmet = Helmet.renderStatic();
     const { statusCode, url: redirectTo } = context;
     if (redirectTo) {
@@ -74,7 +78,6 @@ export default async (options) => {
     match: reactRouterMatch,
     ...rest,
   });
-
   const doc = ReactDOMServer.renderToStaticMarkup(<Doc {...docProps} />);
-  return `<!doctype html>${doc.replace('REPLACE_THIS_IN_RENDERER_METHOD', html)}`;
+  return `<!doctype html>${doc.replace('DO_NOT_CHANGE_THIS_LINE', html)}`;
 };

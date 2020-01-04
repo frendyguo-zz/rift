@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import serialize from 'serialize-javascript';
+import RiftData from './RiftData';
 
 export default class Document extends Component {
   static async getInitialProps({ assets, data, renderPage }) {
@@ -28,25 +28,13 @@ export default class Document extends Component {
           {helmet.title.toComponent()}
           {helmet.meta.toComponent()}
           {helmet.link.toComponent()}
-          {
-            assets.client.css && <link rel="stylesheet" href={assets.client.css} />
-          }
+          {assets.client.css && <link rel="stylesheet" href={assets.client.css} />}
         </head>
         <body {...bodyAttrs}>
-          <script
-            id="__RIFT_DATA__"
-            type="application/json"
-            dangerouslySetInnerHTML={{
-              __html: serialize({ ...data }),
-            }}
-          />
-          <div id="root">REPLACE_THIS_IN_RENDERER_METHOD</div>
-          {
-            assets.client.js && <script type="text/javascript" src={assets.client.js} defer crossOrigin="anonymouse" />
-          }
-          {
-            assets.vendor.js && <script src={assets.vendor.js} defer crossOrigin="anonymouse" />
-          }
+          <RiftData data={data} />
+          <div id="root">DO_NOT_CHANGE_THIS_LINE</div>
+          {assets.client.js && <script type="text/javascript" src={assets.client.js} defer crossOrigin="anonymouse" />}
+          {assets.vendor.js && <script src={assets.vendor.js} defer crossOrigin="anonymouse" />}
         </body>
       </html>
     );

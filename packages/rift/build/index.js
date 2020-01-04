@@ -17,6 +17,12 @@ Object.defineProperty(exports, "RiftApp", {
     return _RiftApp["default"];
   }
 });
+Object.defineProperty(exports, "RiftData", {
+  enumerable: true,
+  get: function get() {
+    return _RiftData["default"];
+  }
+});
 Object.defineProperty(exports, "Document", {
   enumerable: true,
   get: function get() {
@@ -51,6 +57,8 @@ Object.defineProperty(exports, "renderer", {
 var _ = _interopRequireDefault(require("./_404"));
 
 var _RiftApp = _interopRequireDefault(require("./RiftApp"));
+
+var _RiftData = _interopRequireDefault(require("./RiftData"));
 
 var _Document = _interopRequireDefault(require("./Document"));
 

@@ -45,14 +45,14 @@ function () {
   var _ref = (0, _asyncToGenerator2["default"])(
   /*#__PURE__*/
   _regenerator["default"].mark(function _callee2(options) {
-    var req, res, routes, assets, rest, Doc, context, renderPage, _ref3, match, data, redirectTo, statusCode, reactRouterMatch, _ref4, html, docProps, doc;
+    var req, res, routes, assets, customDocument, customRenderer, rest, Doc, context, renderPage, _ref3, match, data, redirectTo, statusCode, reactRouterMatch, _ref4, html, docProps, doc;
 
     return _regenerator["default"].wrap(function _callee2$(_context2) {
       while (1) {
         switch (_context2.prev = _context2.next) {
           case 0:
-            req = options.req, res = options.res, routes = options.routes, assets = options.assets, rest = (0, _objectWithoutProperties2["default"])(options, ["req", "res", "routes", "assets"]);
-            Doc = _Document["default"];
+            req = options.req, res = options.res, routes = options.routes, assets = options.assets, customDocument = options.customDocument, customRenderer = options.customRenderer, rest = (0, _objectWithoutProperties2["default"])(options, ["req", "res", "routes", "assets", "customDocument", "customRenderer"]);
+            Doc = customDocument || _Document["default"];
             context = {};
 
             renderPage =
@@ -61,17 +61,22 @@ function () {
               var _ref2 = (0, _asyncToGenerator2["default"])(
               /*#__PURE__*/
               _regenerator["default"].mark(function _callee() {
-                var content, html, helmet, statusCode, redirectTo;
+                var defaultRenderer, renderer, node, html, helmet, statusCode, redirectTo;
                 return _regenerator["default"].wrap(function _callee$(_context) {
                   while (1) {
                     switch (_context.prev = _context.next) {
                       case 0:
-                        content = _react["default"].createElement(_reactRouterDom.StaticRouter, {
+                        defaultRenderer = function defaultRenderer(element) {
+                          return _server["default"].renderToString(element);
+                        };
+
+                        renderer = customRenderer || defaultRenderer;
+                        node = _react["default"].createElement(_reactRouterDom.StaticRouter, {
                           location: req.url,
                           context: context,
                           __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 22
+                            lineNumber: 26
                           }
                         }, // eslint-disable-next-line no-use-before-define
                         _react["default"].createElement(_RiftApp["default"], {
@@ -79,10 +84,10 @@ function () {
                           data: data,
                           __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 25
+                            lineNumber: 29
                           }
                         }));
-                        html = _server["default"].renderToString(content);
+                        html = renderer(node);
                         helmet = _reactHelmet["default"].renderStatic();
                         statusCode = context.statusCode, redirectTo = context.url;
 
@@ -99,7 +104,7 @@ function () {
                           helmet: helmet
                         });
 
-                      case 7:
+                      case 9:
                       case "end":
                         return _context.stop();
                     }
@@ -171,10 +176,10 @@ function () {
             doc = _server["default"].renderToStaticMarkup(_react["default"].createElement(Doc, (0, _extends2["default"])({}, docProps, {
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 78
+                lineNumber: 81
               }
             })));
-            return _context2.abrupt("return", "<!doctype html>".concat(doc.replace('REPLACE_THIS_IN_RENDERER_METHOD', html)));
+            return _context2.abrupt("return", "<!doctype html>".concat(doc.replace('DO_NOT_CHANGE_THIS_LINE', html)));
 
           case 26:
           case "end":

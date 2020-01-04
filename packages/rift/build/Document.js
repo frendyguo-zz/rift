@@ -31,7 +31,7 @@ var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/de
 
 var _react = _interopRequireWildcard(require("react"));
 
-var _serializeJavascript = _interopRequireDefault(require("serialize-javascript"));
+var _RiftData = _interopRequireDefault(require("./RiftData"));
 
 var _jsxFileName = "/Users/frendyguo/Developments/rift/packages/rift/src/Document.js";
 
@@ -104,37 +104,33 @@ function (_Component) {
         href: assets.client.css,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 32
+          lineNumber: 31
         }
       })), _react["default"].createElement("body", (0, _extends2["default"])({}, bodyAttrs, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 35
+          lineNumber: 33
         }
-      }), _react["default"].createElement("script", {
-        id: "__RIFT_DATA__",
-        type: "application/json",
-        dangerouslySetInnerHTML: {
-          __html: (0, _serializeJavascript["default"])(_objectSpread({}, data))
-        },
+      }), _react["default"].createElement(_RiftData["default"], {
+        data: data,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 36
+          lineNumber: 34
         }
       }), _react["default"].createElement("div", {
         id: "root",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 43
+          lineNumber: 35
         }
-      }, "REPLACE_THIS_IN_RENDERER_METHOD"), assets.client.js && _react["default"].createElement("script", {
+      }, "DO_NOT_CHANGE_THIS_LINE"), assets.client.js && _react["default"].createElement("script", {
         type: "text/javascript",
         src: assets.client.js,
         defer: true,
         crossOrigin: "anonymouse",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 45
+          lineNumber: 36
         }
       }), assets.vendor.js && _react["default"].createElement("script", {
         src: assets.vendor.js,
@@ -142,7 +138,7 @@ function (_Component) {
         crossOrigin: "anonymouse",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 48
+          lineNumber: 37
         }
       })));
     }
