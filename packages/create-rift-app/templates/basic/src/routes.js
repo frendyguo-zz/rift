@@ -1,4 +1,4 @@
-import Home from './Home';
+import Home from './pages/Home';
 import { asyncComponent } from '@frendyguo/rift';
 
 export default [
@@ -11,7 +11,7 @@ export default [
     path: '/about',
     exact: true,
     component: asyncComponent({
-      loader: () => import('./About'),
+      loader: () => import('./pages/About'),
       Placeholder: null,
     }),
   },
